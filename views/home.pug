@@ -1,0 +1,84 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Liste des Questions
+    style. 
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f6;
+            color: #333;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 20px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+            width: 60%;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+  body
+    if user 
+      a(href="/logout") Se déconnecter
+      h2 Poser une Nouvelle Question
+      form(action="/new-question", method="POST")
+        input(type="text", name="question", placeholder="Votre question")
+        button(type="submit") Poser la Question
+    else
+      a(href="/login") login 
+      a(href="/registre") registre 
+    h1 Liste des Questions
+    if questions && questions.length > 0
+    each question in questions
+        p= question.question
+        a(href=`/repondre/${question._id}`) Répondre
+    else
+      p Il n'y a pas de questions pour le moment.
+

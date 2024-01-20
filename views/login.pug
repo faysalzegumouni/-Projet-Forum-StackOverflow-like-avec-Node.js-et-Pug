@@ -1,0 +1,73 @@
+// login.pug
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Connexion
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      form {
+        width: 300px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      input[type="email"],
+      input[type="password"],
+      button[type="submit"] {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      .error-message {
+          color: red;
+          margin-top: 10px;
+          opacity: 0;
+          transition: opacity 0.3s ease-in-out;
+      }
+      .show-error {
+         opacity: 1;
+      }
+
+
+  body
+    h1 Connexion
+    if errorMessage
+      p.error-message= errorMessage
+    form(action="/login", method="POST")
+      input(type="email", name="email", placeholder="Email")
+      input(type="password", name="password", placeholder="Mot de passe")
+      button(type="submit") Se connecter
